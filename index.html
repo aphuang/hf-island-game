@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>飛吧！華府島嶼大冒險</title>
+  <meta name="description" content="華府旅行社互動遊戲：擲骰子駕駛飛機環遊世界小島，沿途發現精選行程，剛好降落命運之島就能參加抽獎！">
+  <meta property="og:title" content="飛吧！華府島嶼大冒險">
+  <meta property="og:description" content="擲骰子環遊世界，剛好降落命運之島就能抽好禮！">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#8fd3f4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-badge">華府旅行社</span>
+      <span class="brand-title">飛吧！島嶼大冒險</span>
+    </div>
+    <div class="top-actions">
+      <button class="btn btn-ghost btn-dex" id="dexBtn" type="button"><span class="dex-label">島嶼</span>圖鑑<b id="dexCount">0/13</b></button>
+      <button class="btn btn-ghost" id="rulesBtn" type="button">說明</button>
+    </div>
+  </header>
+
+  <main class="stage" id="stage">
+    <div class="map-wrap" id="mapWrap">
+      <svg id="map" role="img" aria-label="海上島嶼地圖"></svg>
+
+      <div class="center-panel" id="centerPanel">
+        <div class="title-block">
+          <p class="kicker">TRAVEL ISLAND ADVENTURE</p>
+          <h1 class="headline"><span>飛吧！</span><span>島嶼大冒險</span></h1>
+          <p class="sub">擲骰子環遊 <b id="countryCount">13</b> 國<br>剛好降落命運之島<br>就能抽好禮！</p>
+        </div>
+
+        <div class="hud" id="hud">
+          <div class="hud-wallet" id="hudWallet">
+            <span class="wallet-ico" id="walletIco"></span>
+            <div class="wallet-num"><small>貝殼幣</small><b id="hudCoins">0</b></div>
+            <div class="wallet-goal"><small>目標行程</small><b id="hudGoal">—</b></div>
+            <div class="wallet-bar"><i id="hudBar"></i></div>
+          </div>
+          <div class="hud-target">
+            <small>本局目的地</small>
+            <strong id="hudTarget">尚未抽籤</strong>
+            <span class="hud-dist" id="hudDist">按下按鈕抽出目的地</span>
+          </div>
+          <div class="hud-play">
+            <div class="dice-box" aria-hidden="true">
+              <div class="dice" id="dice">
+                <div class="face f1" data-v="1"></div>
+                <div class="face f2" data-v="2"></div>
+                <div class="face f3" data-v="3"></div>
+                <div class="face f4" data-v="4"></div>
+                <div class="face f5" data-v="5"></div>
+                <div class="face f6" data-v="6"></div>
+              </div>
+            </div>
+            <div class="hud-actions">
+              <button class="btn btn-primary btn-roll" id="rollBtn" type="button" disabled>載入中…</button>
+              <span class="hud-meta">已擲 <b id="hudRolls">0</b> 次</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal-card" id="modalCard" role="dialog" aria-modal="true"></div>
+  </div>
+  <div class="dice-toss" id="diceToss" hidden aria-hidden="true">
+    <div class="dice-toss-inner">
+      <div class="dice dice-lg" id="diceBig">
+        <div class="face f1" data-v="1"></div>
+        <div class="face f2" data-v="2"></div>
+        <div class="face f3" data-v="3"></div>
+        <div class="face f4" data-v="4"></div>
+        <div class="face f5" data-v="5"></div>
+        <div class="face f6" data-v="6"></div>
+      </div>
+    </div>
+    <div class="dice-result" id="diceResult"></div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <script src="data.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
